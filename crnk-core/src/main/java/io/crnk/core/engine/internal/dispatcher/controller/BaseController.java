@@ -60,7 +60,7 @@ public abstract class BaseController implements Controller {
 		}
 		if (bodyRegistryEntry == null || !bodyRegistryEntry.isParent(endpointRegistryEntry)) {
 			String message = String.format("Inconsistent type definition between path and body: body type: " +
-					"%s, request type: %s", methodType, endpointRegistryEntry.getResourceInformation().getResourceType());
+					"%s, request type: %s", bodyRegistryEntry.getResourceInformation().getResourceType(), endpointRegistryEntry.getResourceInformation().getResourceType());
 			throw new RequestBodyException(methodType, endpointRegistryEntry.getResourceInformation().getResourceType(), message);
 		}
 	}

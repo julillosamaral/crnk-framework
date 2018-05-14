@@ -38,7 +38,9 @@ public class DefaultResourceRegistryPart extends ResourceRegistryPartBase {
 		Class<?> resourceClass = resourceInformation.getResourceClass();
 		String resourceType = resourceInformation.getResourceType();
 		String resourcePath = resourceInformation.getResourcePath();
-		PreconditionUtil.assertNotNull("no resourceType set", resourceType);
+		PreconditionUtil.assertNotNull("No resourceType set", resourceType);
+		PreconditionUtil.assertFalse("Resource already exists", resourcesByType.containsKey(resourceType));
+		PreconditionUtil.assertFalse("Resource already exists", resourcesByPath.containsKey(resourcePath));
 		resourcesByClass.put(resourceClass, entry);
 		resourcesByType.put(resourceType, entry);
 		resourcesByPath.put(resourcePath != null ? resourcePath : resourceType, entry);
